@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cinemax AI Assistant</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent}
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            position: fixed;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #0f0f0f;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+.chat-container {
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        /* Background Image */
+.chat-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('./chat.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            z-index: 0;
+            filter: brightness(0.7);
+        }
+.chat-header {
+            background: rgba(229, 9, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 1.2em;
+            letter-spacing: -0.5px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            z-index: 2;
+            position: relative;
+        }
+.chat-box {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            -webkit-overflow-scrolling: touch;
+            z-index: 1;
+            position: relative;
+        }
+.chat-box::-webkit-scrollbar {
+            width: 5px;
+        }
+.chat-box::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+.msg {
+            padding: 12px 14px;
+            border-radius: 12px;
+            max-width: 85%;
+            word-wrap: break-word;
+            line-height: 1.6;
+            font-size: 15px;
+            animation: fadeIn 0.2s ease-in;
+            white-space: pre-wrap;
+            backdrop-filter: blur(12px);
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(5px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+.user-msg {
+            background: rgba(0, 120, 255, 0.95);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+.ai-msg {
+            background: rgba(39, 39, 39, 0.95);
+            align-self: flex-start;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+ .msg img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 8px;
+            display: block;
+        }
+.input-area {
+            display: flex;
+            padding: 12px;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            gap: 8px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            z-index: 2;
+            position: relative;
+        }
+ .input-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            background: rgba(39, 39, 39, 0.95);
+            border-radius: 24px;
+            padding: 0 4px 0 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+ .input-left:focus-within {
+            border-color: #E50914;
+        }
+.input-area input[type="text"] {
+            flex: 1;
+            padding: 12px 0;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+.input-area input::placeholder {
+            color: #999;
+        }
+ .img-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+ .img-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+ .img-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+.input-area button.send {
+            background: #E50914;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 15px;
+            transition: opacity 0.15s;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
+        }
+.input-area button.send:hover {
+            opacity: 0.85;
+        }
+.input-area button.send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+.typing {
+            display: flex;
+            gap: 4px;
+            padding: 8px 0;
+        }
+.typing span {
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.7; }
+            30% { transform: translateY(-10px); opacity: 1; }
+        }
+        #imageInput {
+            display: none;
+        }
+ .preview-img {
+            max-width: 120px;
+            max-height: 120px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">💬 Cinemax AI Assistant</div>
+    <div class="chat-box" id="chatBox">
+        <div class="msg ai-msg">හලෝ! මම Cinemax AI එක 😊<br><br>📷 ඕනම photo එකක් upload කරලා අහන්න<br>💬 Films, Science, Tech, Homework, ඕනම දෙයක් ගැන මගෙන් අහන්න<br><br>මොකක්ද දැනගන්න ඕන? 🚀</div>
+    </div>
+    <div class="input-area">
+        <div class="input-left">
+            <input type="text" id="userInput" placeholder="Message or upload photo...">
+            <button class="img-btn" onclick="document.getElementById('imageInput').click()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </button>
+            <input type="file" id="imageInput" accept="image/*" onchange="handleImageUpload(event)">
+        </div>
+        <button class="send" id="sendBtn" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+const chatBox = document.getElementById("chatBox");
+const inputField = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
+let selectedImage = null;
+
+// General AI - ඕනම දෙයක් දන්නවා
+let chatHistory = [
+    {role: "system", content: "You are Cinemax AI, a helpful, friendly and intelligent assistant. You can answer questions about ANY topic - movies, science, technology, history, math, coding, homework, general knowledge, etc. If user uploads an image, analyze it and describe what you see. Always reply in Sinhala if the user speaks Sinhala, otherwise use the user's language. Keep answers helpful, accurate and conversational. Use emojis to make it fun. You are NOT just a movie bot anymore - you are a general AI assistant."}
+];
+
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        selectedImage = e.target.result;
+        chatBox.innerHTML += `<div class="msg user-msg">Photo uploaded:<img src="${selectedImage}" class="preview-img"></div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+        inputField.placeholder = "Photo එක ගැන අහන්න...";
+    };
+    reader.readAsDataURL(file);
+}
+
+async function sendMessage() {
+    const userText = inputField.value.trim();
+    if (!userText &&!selectedImage) return;
+
+    if (selectedImage) {
+        chatBox.innerHTML += `<div class="msg user-msg">${userText || 'මේ photo එකේ මොකක්ද තියෙන්නේ? විස්තර කියන්න.'}</div>`;
+    } else {
+        chatBox.innerHTML += `<div class="msg user-msg">${escapeHtml(userText)}</div>`;
+    }
+
+    inputField.value = "";
+    inputField.placeholder = "Message or upload photo...";
+    chatBox.scrollTop = chatBox.scrollHeight;
+    sendBtn.disabled = true;
+
+    const loadingId = 'loading-' + Date.now();
+    chatBox.innerHTML += `<div class="msg ai-msg" id="${loadingId}"><div class="typing"><span></span><span></span></div></div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+        let messages = [...chatHistory];
+
+        if (selectedImage) {
+            messages.push({
+                role: "user",
+                content: [
+                    {type: "text", text: userText || "What is in this image? Describe it in detail. Answer in Sinhala."},
+                    {type: "image_url", image_url: {url: selectedImage}}
+                ]
+            });
+        } else {
+            messages.push({role: "user", content: userText});
+        }
+
+        const endpoint = "https://text.pollinations.ai/openai";
+
+        const response = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: "gpt-4o",
+                messages: messages,
+                max_tokens: 1000,
+                temperature: 0.8
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const aiReply = data.choices[0].message.content;
+
+        chatHistory.push({role: "user", content: selectedImage? "[Image] " + (userText || "Describe this") : userText});
+        chatHistory.push({role: "assistant", content: aiReply});
+
+        document.getElementById(loadingId).remove();
+        chatBox.innerHTML += `<div class="msg ai-msg">${escapeHtml(aiReply)}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+    } catch (error) {
+        document.getElementById(loadingId).remove();
+        chatBox.innerHTML += `<div class="msg ai-msg" style="color:#ff4757;">සමාවෙන්න, දැනට සම්බන්ධ වෙන්න බැරි උනා 😔<br>ටිකකින් ආයේ try කරන්න.</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+        console.error(error);
+    } finally {
+        sendBtn.disabled = false;
+        selectedImage = null;
+        document.getElementById('imageInput').value = '';
+    }
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+inputField.addEventListener("keypress", function(event) {
+    if (event.key === "Enter" &&!sendBtn.disabled) {
+        sendMessage();
+    }
+});
+</script>
+
+</body>
+</html>
