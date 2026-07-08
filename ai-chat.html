@@ -19,7 +19,7 @@
             display: flex;
             flex-direction: column;
         }
-       .chat-container {
+      .chat-container {
             width: 100%;
             height: 100%;
             background: #0a0a0a;
@@ -28,22 +28,19 @@
             overflow: hidden;
             position: relative;
         }
-       .chat-container::before {
+      .chat-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('./chat.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             opacity: 0.4;
             z-index: 0;
             filter: brightness(0.7);
         }
-       .chat-header {
+      .chat-header {
             background: rgba(229, 9, 20, 0.95);
             backdrop-filter: blur(10px);
             padding: 16px;
@@ -56,7 +53,7 @@
             z-index: 2;
             position: relative;
         }
-       .chat-box {
+      .chat-box {
             flex: 1;
             padding: 16px;
             overflow-y: auto;
@@ -67,14 +64,14 @@
             z-index: 1;
             position: relative;
         }
-       .chat-box::-webkit-scrollbar {
+      .chat-box::-webkit-scrollbar {
             width: 5px;
         }
-       .chat-box::-webkit-scrollbar-thumb {
+      .chat-box::-webkit-scrollbar-thumb {
             background: rgba(255,255,255,0.3);
             border-radius: 3px;
         }
-       .msg {
+      .msg {
             padding: 12px 14px;
             border-radius: 12px;
             max-width: 85%;
@@ -89,26 +86,26 @@
             from {opacity: 0; transform: translateY(5px);}
             to {opacity: 1; transform: translateY(0);}
         }
-       .user-msg {
+      .user-msg {
             background: rgba(0, 120, 255, 0.95);
             align-self: flex-end;
             border-bottom-right-radius: 4px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.4);
         }
-       .ai-msg {
+      .ai-msg {
             background: rgba(39, 39, 39, 0.95);
             align-self: flex-start;
             border: 1px solid rgba(255,255,255,0.15);
             border-bottom-left-radius: 4px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.4);
         }
-       .msg img {
+      .msg img {
             max-width: 100%;
             border-radius: 8px;
             margin-top: 8px;
             display: block;
         }
-       .input-area {
+      .input-area {
             display: flex;
             padding: 12px;
             background: rgba(15, 15, 15, 0.95);
@@ -120,7 +117,7 @@
             z-index: 2;
             position: relative;
         }
-       .input-left {
+      .input-left {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -130,10 +127,10 @@
             padding: 0 4px 0 16px;
             border: 1px solid rgba(255,255,255,0.15);
         }
-       .input-left:focus-within {
+      .input-left:focus-within {
             border-color: #E50914;
         }
-       .input-area input[type="text"] {
+      .input-area input[type="text"] {
             flex: 1;
             padding: 12px 0;
             border: none;
@@ -142,10 +139,10 @@
             font-size: 16px;
             outline: none;
         }
-       .input-area input::placeholder {
+      .input-area input::placeholder {
             color: #999;
         }
-       .img-btn {
+      .img-btn {
             width: 36px;
             height: 36px;
             border-radius: 50%;
@@ -159,15 +156,15 @@
             flex-shrink: 0;
             transition: all 0.2s;
         }
-       .img-btn:hover {
+      .img-btn:hover {
             background: rgba(255,255,255,0.1);
             color: white;
         }
-       .img-btn svg {
+      .img-btn svg {
             width: 22px;
             height: 22px;
         }
-       .input-area button.send {
+      .input-area button.send {
             background: #E50914;
             color: white;
             border: none;
@@ -180,27 +177,27 @@
             flex-shrink: 0;
             box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
         }
-       .input-area button.send:hover {
+      .input-area button.send:hover {
             opacity: 0.85;
         }
-       .input-area button.send:disabled {
+      .input-area button.send:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-       .typing {
+      .typing {
             display: flex;
             gap: 4px;
             padding: 8px 0;
         }
-       .typing span {
+      .typing span {
             width: 8px;
             height: 8px;
             background: #999;
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
-       .typing span:nth-child(2) { animation-delay: 0.2s; }
-       .typing span:nth-child(3) { animation-delay: 0.4s; }
+      .typing span:nth-child(2) { animation-delay: 0.2s; }
+      .typing span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes typing {
             0%, 60%, 100% { transform: translateY(0); opacity: 0.7; }
             30% { transform: translateY(-10px); opacity: 1; }
@@ -208,7 +205,7 @@
         #imageInput {
             display: none;
         }
-       .preview-img {
+      .preview-img {
             max-width: 120px;
             max-height: 120px;
             border-radius: 8px;
@@ -241,9 +238,8 @@ const inputField = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 let selectedImage = null;
 
-// General AI - ඕනම දෙයක් දන්නවා
 let chatHistory = [
-    {role: "system", content: "You are Cinemax AI, a helpful, friendly and intelligent assistant. You can answer questions about ANY topic - movies, science, technology, history, math, coding, homework, general knowledge, etc. If user uploads an image, analyze it and describe what you see. Always reply in Sinhala if the user speaks Sinhala, otherwise use the user's language. Keep answers helpful, accurate and conversational. Use emojis to make it fun. You are NOT just a movie bot anymore - you are a general AI assistant."}
+    {role: "system", content: "You are Cinemax AI, a helpful, friendly and intelligent assistant. You can answer questions about ANY topic - movies, science, technology, history, math, coding, homework, general knowledge, etc. If user uploads an image, analyze it and describe what you see. Always reply in Sinhala if the user speaks Sinhala, otherwise use the user's language. Keep answers helpful, accurate and conversational. Use emojis to make it fun."}
 ];
 
 function handleImageUpload(event) {
@@ -280,41 +276,51 @@ async function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        let messages = [...chatHistory];
+        // Pollinations එකේ image වලට GET request එකක් යවන්න ඕන
+        let apiUrl;
 
         if (selectedImage) {
-            messages.push({
-                role: "user",
-                content: [
-                    {type: "text", text: userText || "What is in this image? Describe it in detail. Answer in Sinhala."},
-                    {type: "image_url", image_url: {url: selectedImage}}
-                ]
+            // Image එකක් තියෙනවා නම්
+            const prompt = encodeURIComponent(userText || "Describe this image in detail in Sinhala");
+            const imageParam = encodeURIComponent(selectedImage);
+            apiUrl = `https://image.pollinations.ai/prompt/${prompt}?model=openai&image=${imageParam}`;
+
+            // Image analysis වලට වෙනම API එකක් call කරනවා
+            const visionResponse = await fetch(`https://text.pollinations.ai/${prompt}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    model: "openai",
+                    messages: [
+                        {role: "user", content: [
+                            {type: "text", text: userText || "What is in this image? Describe it in detail. Answer in Sinhala."},
+                            {type: "image_url", image_url: {url: selectedImage}}
+                        ]}
+                    ]
+                })
             });
+
+            if (!visionResponse.ok) throw new Error(`API Error: ${visionResponse.status}`);
+            const data = await visionResponse.json();
+            var aiReply = data.choices[0].message.content;
+
         } else {
-            messages.push({role: "user", content: userText});
+            // Text only නම්
+            const response = await fetch("https://text.pollinations.ai/openai", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    model: "openai",
+                    messages: [...chatHistory, {role: "user", content: userText}],
+                    max_tokens: 1000,
+                    temperature: 0.8
+                })
+            });
+
+            if (!response.ok) throw new Error(`Server error: ${response.status}`);
+            const data = await response.json();
+            var aiReply = data.choices[0].message.content;
         }
-
-        const endpoint = "https://text.pollinations.ai/openai";
-
-        const response = await fetch(endpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                model: "openai",
-                messages: messages,
-                max_tokens: 1000,
-                temperature: 0.8
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Server error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        const aiReply = data.choices[0].message.content;
 
         chatHistory.push({role: "user", content: selectedImage? "[Image] " + (userText || "Describe this") : userText});
         chatHistory.push({role: "assistant", content: aiReply});
@@ -325,7 +331,7 @@ async function sendMessage() {
 
     } catch (error) {
         document.getElementById(loadingId).remove();
-        chatBox.innerHTML += `<div class="msg ai-msg" style="color:#ff4757;">සමාවෙන්න, දැනට සම්බන්ධ වෙන්න බැරි උනා 😔<br>ටිකකින් ආයේ try කරන්න.<br><small>Error: ${error.message}</small></div>`;
+        chatBox.innerHTML += `<div class="msg ai-msg" style="color:#ff4757;">සමාවෙන්න, දැනට සම්බන්ධ වෙන්න බැරි උනා 😔<br>Error: ${error.message}<br><br>Pollinations API එකේ image support එක අස්ථිරයි. වෙන free API එකක් පාවිච්චි කරන්න වෙනවා.</div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
         console.error(error);
     } finally {
