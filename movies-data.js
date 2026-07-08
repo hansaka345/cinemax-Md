@@ -44,7 +44,14 @@ export const CUSTOM_MOVIES_DATA = {
     subtitleUrl: 'obse.srt',
     name: 'Obsession (2026)',
     whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20Obsession%20Film%20-%20https%3A%2F%2Fhub.airbender.buzz%2F8eda6e05bd1c6668fcc135d48c06590d%3Ftoken%3D1782922178139'
+  },
+  'tt0241527': { // Harry potter IMDB ID
+    videoUrl: 'https://drive.google.com/file/d/1D0xcgiaJ10hUGAorH0cdRoKb3rxNTd8o/preview',
+    SubtitleUrl: 'Sinhala.dubded',
+    name: 'Harry potter (2001)',
+    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20Harry%20Potter%201%20-%20https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1D0xcgiaJ10hUGAorH0cdRoKb3rxNTd8o%2Fpreview'
   }
+
 };
 
 export const HERO_SERIES = [
