@@ -19,7 +19,7 @@
             display: flex;
             flex-direction: column;
         }
-.chat-container {
+       .chat-container {
             width: 100%;
             height: 100%;
             background: #0a0a0a;
@@ -28,8 +28,7 @@
             overflow: hidden;
             position: relative;
         }
-        /* Background Image */
-.chat-container::before {
+       .chat-container::before {
             content: '';
             position: absolute;
             top: 0;
@@ -44,7 +43,7 @@
             z-index: 0;
             filter: brightness(0.7);
         }
-.chat-header {
+       .chat-header {
             background: rgba(229, 9, 20, 0.95);
             backdrop-filter: blur(10px);
             padding: 16px;
@@ -57,7 +56,7 @@
             z-index: 2;
             position: relative;
         }
-.chat-box {
+       .chat-box {
             flex: 1;
             padding: 16px;
             overflow-y: auto;
@@ -68,14 +67,14 @@
             z-index: 1;
             position: relative;
         }
-.chat-box::-webkit-scrollbar {
+       .chat-box::-webkit-scrollbar {
             width: 5px;
         }
-.chat-box::-webkit-scrollbar-thumb {
+       .chat-box::-webkit-scrollbar-thumb {
             background: rgba(255,255,255,0.3);
             border-radius: 3px;
         }
-.msg {
+       .msg {
             padding: 12px 14px;
             border-radius: 12px;
             max-width: 85%;
@@ -90,26 +89,26 @@
             from {opacity: 0; transform: translateY(5px);}
             to {opacity: 1; transform: translateY(0);}
         }
-.user-msg {
+       .user-msg {
             background: rgba(0, 120, 255, 0.95);
             align-self: flex-end;
             border-bottom-right-radius: 4px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.4);
         }
-.ai-msg {
+       .ai-msg {
             background: rgba(39, 39, 39, 0.95);
             align-self: flex-start;
             border: 1px solid rgba(255,255,255,0.15);
             border-bottom-left-radius: 4px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.4);
         }
- .msg img {
+       .msg img {
             max-width: 100%;
             border-radius: 8px;
             margin-top: 8px;
             display: block;
         }
-.input-area {
+       .input-area {
             display: flex;
             padding: 12px;
             background: rgba(15, 15, 15, 0.95);
@@ -121,7 +120,7 @@
             z-index: 2;
             position: relative;
         }
- .input-left {
+       .input-left {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -131,10 +130,10 @@
             padding: 0 4px 0 16px;
             border: 1px solid rgba(255,255,255,0.15);
         }
- .input-left:focus-within {
+       .input-left:focus-within {
             border-color: #E50914;
         }
-.input-area input[type="text"] {
+       .input-area input[type="text"] {
             flex: 1;
             padding: 12px 0;
             border: none;
@@ -143,10 +142,10 @@
             font-size: 16px;
             outline: none;
         }
-.input-area input::placeholder {
+       .input-area input::placeholder {
             color: #999;
         }
- .img-btn {
+       .img-btn {
             width: 36px;
             height: 36px;
             border-radius: 50%;
@@ -160,15 +159,15 @@
             flex-shrink: 0;
             transition: all 0.2s;
         }
- .img-btn:hover {
+       .img-btn:hover {
             background: rgba(255,255,255,0.1);
             color: white;
         }
- .img-btn svg {
+       .img-btn svg {
             width: 22px;
             height: 22px;
         }
-.input-area button.send {
+       .input-area button.send {
             background: #E50914;
             color: white;
             border: none;
@@ -181,27 +180,27 @@
             flex-shrink: 0;
             box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
         }
-.input-area button.send:hover {
+       .input-area button.send:hover {
             opacity: 0.85;
         }
-.input-area button.send:disabled {
+       .input-area button.send:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-.typing {
+       .typing {
             display: flex;
             gap: 4px;
             padding: 8px 0;
         }
-.typing span {
+       .typing span {
             width: 8px;
             height: 8px;
             background: #999;
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
-.typing span:nth-child(2) { animation-delay: 0.2s; }
-.typing span:nth-child(3) { animation-delay: 0.4s; }
+       .typing span:nth-child(2) { animation-delay: 0.2s; }
+       .typing span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes typing {
             0%, 60%, 100% { transform: translateY(0); opacity: 0.7; }
             30% { transform: translateY(-10px); opacity: 1; }
@@ -209,7 +208,7 @@
         #imageInput {
             display: none;
         }
- .preview-img {
+       .preview-img {
             max-width: 120px;
             max-height: 120px;
             border-radius: 8px;
@@ -266,7 +265,7 @@ async function sendMessage() {
     if (!userText &&!selectedImage) return;
 
     if (selectedImage) {
-        chatBox.innerHTML += `<div class="msg user-msg">${userText || 'මේ photo එකේ මොකක්ද තියෙන්නේ? විස්තර කියන්න.'}</div>`;
+        chatBox.innerHTML += `<div class="msg user-msg">${userText || 'මේ photo එකේ මොකක්ද තියෙන්නේ? විස්තර කියන්න.'}<img src="${selectedImage}" class="preview-img"></div>`;
     } else {
         chatBox.innerHTML += `<div class="msg user-msg">${escapeHtml(userText)}</div>`;
     }
@@ -303,7 +302,7 @@ async function sendMessage() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "gpt-4o",
+                model: "openai",
                 messages: messages,
                 max_tokens: 1000,
                 temperature: 0.8
@@ -326,7 +325,7 @@ async function sendMessage() {
 
     } catch (error) {
         document.getElementById(loadingId).remove();
-        chatBox.innerHTML += `<div class="msg ai-msg" style="color:#ff4757;">සමාවෙන්න, දැනට සම්බන්ධ වෙන්න බැරි උනා 😔<br>ටිකකින් ආයේ try කරන්න.</div>`;
+        chatBox.innerHTML += `<div class="msg ai-msg" style="color:#ff4757;">සමාවෙන්න, දැනට සම්බන්ධ වෙන්න බැරි උනා 😔<br>ටිකකින් ආයේ try කරන්න.<br><small>Error: ${error.message}</small></div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
         console.error(error);
     } finally {
