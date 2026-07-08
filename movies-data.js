@@ -13,7 +13,7 @@ export const EPISODES_DATA = {
         videoUrl: 'https://rapidseedbox85742-secure.swift-031.seedbox.vip/media/aa287beec019e30627cb772020be67a1/House.of.the.Dragon.S03E01.720p.HMAX.WEB-DL.DDP5.1.Atmos.H.264-Draken02.mkv',
         subtitleUrl: 'houseofthedragon.srt',
         name: 'Episode 1: Season 3 Premiere',
-        whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20House%20of%20the%20Dragon%20S03E01%20-%20https%3A%2F%2Frapidseedbox85742-secure.swift-031.seedbox.vip%2Fmedia%2Faa287beec019e30627cb772020be67a1%2FHouse.of.the.Dragon.S03E01.720p.HMAX.WEB-DL.DDP5.1.Atmos.H.264-Draken02.mkv'
+        whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20House%20of%20the%20Dragon%20S03E01%20-%20https%3A%2F%2Frapidseedbox85742-secure.swift-031.seedbox.vip/media/aa287beec019e30627cb772020be67a1/House.of.the.Dragon.S03E01.720p.HMAX.WEB-DL.DDP5.1.Atmos.H.264-Draken02.mkv'
       },
       '2': { 
         videoUrl: 'https://hub.airbender.buzz/1c962f145e53f144b539f7721c2139c4',
@@ -25,7 +25,7 @@ export const EPISODES_DATA = {
         videoUrl: 'https://rapidseedbox85742-secure.swift-031.seedbox.vip/media/643f34718ec553520ea177a257ca3450/House.of.the.Dragon.S03E03.720p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-MissionHexaPewPew.mkv',
         subtitleUrl: 'houseofthedragon.srt', 
         name: 'Episode 3: Season 3 Episode 3',
-        whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20House%20of%20the%20Dragon%20S03E03%20-%20https%3A%2F%2Frapidseedbox85742-secure.swift-031.seedbox.vip%2Fmedia%2F643f34718ec553520ea177a257ca3450%2FHouse.of.the.Dragon.S03E03.720p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-MissionHexaPewPew.mkv'
+        whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20House%20of%20the%20Dragon%20S03E03%20-%20https%3A%2F%2Frapidseedbox85742-secure.swift-031.seedbox.vip%2Fmedia%2F643f34718ec553520ea177a257ca3450/House.of.the.Dragon.S03E03.720p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-MissionHexaPewPew.mkv'
       }
     }
   }
@@ -33,6 +33,12 @@ export const EPISODES_DATA = {
 
 // Hardcoded Movies (චිත්‍රපට වීඩියෝ සහ බාගත කිරීම් ලින්ක්ස්)
 export const CUSTOM_MOVIES_DATA = {
+  'tt4633694': { // Spider-Man: Into the Spider-Verse IMDB ID
+    videoUrl: 'https://iws.sinhalachr.workers.dev/?id=qo6UNotut4VUAye5RPnr5cHR&assetToken=qghBWpb9k6xuPzeFP1ZEGk1d&download=true',
+    subtitleUrl: '', 
+    name: 'Spider-Man: Into the Spider-Verse (2018)',
+    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20Spider-Man%20Into%20the%20Spider-Verse%20-%20https%3A%2F%2Fiws.sinhalachr.workers.dev%2F%3Fid%3Dqo6UNotut4VUAye5RPnr5cHR%26assetToken%3DqghBWpb9k6xuPzeFP1ZEGk1d%26download%3Dtrue'
+  },
   'tt28212876': { // Obsession IMDB ID
     videoUrl: 'https://hub.airbender.buzz/8eda6e05bd1c6668fcc135d48c06590d?token=1782922178139',
     subtitleUrl: 'obse.srt',
@@ -42,6 +48,7 @@ export const CUSTOM_MOVIES_DATA = {
 };
 
 export const HERO_SERIES = [
+  {id:'tt4633694',title:'Spider-Man: Into the Spider-Verse',year:'2018',rating:'8.4',plot:'Teen Miles Morales becomes the Spider-Man of his universe and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.'},
   {id:'tt28212876',title:'Obsession',year:'2026',rating:'8.0',plot:'A thrilling and emotional deep dive into love, mystery, and unpredictable human desire.'},
   {id:'tt11198330',title:'House of the Dragon',year:'2022',rating:'8.5',plot:'The story of the Targaryen civil war that took place about 200 years before the events of Game of Thrones.'},
   {id:'tt9813792',title:'From',year:'2022',rating:'7.8',plot:'Unravel the mystery of a city in middle U.S.A. that imprisons everyone who enters.'},
@@ -52,8 +59,8 @@ export const HERO_SERIES = [
 ];
 
 export const CATEGORIES = {
-  trending: ['tt28212876','tt11198330','tt9813792','tt13443470','tt10919420','tt4574334','tt0903747','tt8111088','tt3032476','tt0386676','tt0944947','tt0108778','tt2560140'],
-  hollywood: ['tt28212876','tt0111161','tt1375666','tt0816692','tt0468569','tt0137523','tt0109830','tt0120737','tt0167260','tt4154796','tt7286456','tt15398776','tt9362722'],
+  trending: ['tt4633694','tt28212876','tt11198330','tt9813792','tt13443470','tt10919420','tt4574334','tt0903747','tt8111088','tt3032476','tt0386676','tt0944947','tt0108778','tt2560140'],
+  hollywood: ['tt4633694','tt28212876','tt0111161','tt1375666','tt0816692','tt0468569','tt0137523','tt0109830','tt0120737','tt0167260','tt4154796','tt7286456','tt15398776','tt9362722'],
   kdrama: ['tt15266542','tt14689414','tt13370348','tt11280740','tt10262630','tt13443470','tt11198330','tt1190634','tt10850932','tt11212276'],
   bollywood: ['tt8178634','tt15327088','tt12735488','tt1187043','tt12844910','tt10648342','tt0451850','tt0816442','tt0066763','tt0347304'],
   sinhala: ['tt2386490','tt0111161','tt1375666','tt0816692','tt0468569','tt0137523']
