@@ -55,6 +55,7 @@ export const CUSTOM_MOVIES_DATA = {
 };
 
 export const HERO_SERIES = [
+  {id:'tt0241527',title:'Harry Potter and the Sorcerer\'s Stone',year:'2001',rating:'7.6',plot:'An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.'},
   {id:'tt4633694',title:'Spider-Man: Into the Spider-Verse',year:'2018',rating:'8.4',plot:'Teen Miles Morales becomes the Spider-Man of his universe and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.'},
   {id:'tt28212876',title:'Obsession',year:'2026',rating:'8.0',plot:'A thrilling and emotional deep dive into love, mystery, and unpredictable human desire.'},
   {id:'tt11198330',title:'House of the Dragon',year:'2022',rating:'8.5',plot:'The story of the Targaryen civil war that took place about 200 years before the events of Game of Thrones.'},
