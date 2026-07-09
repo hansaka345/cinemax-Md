@@ -49,19 +49,19 @@ export const CUSTOM_MOVIES_DATA = {
     videoUrl: 'https://drive.google.com/file/d/1D0xcgiaJ10hUGAorH0cdRoKb3rxNTd8o/preview',
     subtitleUrl: '', 
     name: 'Harry Potter and the Sorcerer\'s Stone (2001)',
-    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20Harry%20Potter%201%20-%20https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1D0xcgiaJ10hUGAorH0cdRoKb3rxNTd8o%2Fpreview'
+    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.gdrive%20Harry%20Potter%201%20-%20https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1D0xcgiaJ10hUGAorH0cdRoKb3rxNTd8o%2Fpreview'
   },
   'tt0295297': { // Harry Potter 2
     videoUrl: 'https://drive.google.com/file/d/14_9Xp-giND8ERkt8Jxw02kM9WbhrSakB/preview',
     subtitleUrl: '', 
     name: 'Harry Potter and the Chamber of Secrets (2002)',
-    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20Harry%20Potter%202%20-%20https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F14_9Xp-giND8ERkt8Jxw02kM9WbhrSakB%2Fpreview'
+    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.gdrive%20Harry%20Potter%202%20-%20https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F14_9Xp-giND8ERkt8Jxw02kM9WbhrSakB%2Fpreview'
   },
   'tt0304141': { // Harry Potter 3
     videoUrl: 'https://drive.google.com/file/d/1f32MgHNhl5ajzO-5xcmtkUBVHfjRZry5/preview',
     subtitleUrl: '', 
     name: 'Harry Potter and the Prisoner of Azkaban (2004)',
-    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.download%20Harry%20Potter%203%20-%20https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1f32MgHNhl5ajzO-5xcmtkUBVHfjRZry5%2Fpreview'
+    whatsappDownloadUrl: 'https://wa.me/94775062608?text=.gdrive%20Harry%20Potter%203%20-%20https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1f32MgHNhl5ajzO-5xcmtkUBVHfjRZry5%2Fpreview'
   }
 };
 
